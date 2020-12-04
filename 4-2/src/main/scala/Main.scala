@@ -27,7 +27,7 @@ object Main {
     println(data.count(ppt =>
       fields.forall(
         { case (field, validator) =>
-          ppt.contains(field) && validator(ppt.split(field + ":")(1).split(" |\n").head)})))
+          ppt.contains(field) && validator(ppt.split(field + ":")(1).split("^ |\n").head)})))
 
   }
 }
