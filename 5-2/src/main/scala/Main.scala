@@ -16,7 +16,7 @@ object Main {
   def getIdFromStr(id_str: String): Int = {
     val row = id_str.slice(0, 7).foldLeft((64, 0))({case ((mul, tot), v) => (mul/2, tot + (mul * (if (v == 'B') 1 else 0)))})._2
     val col = id_str.slice(7, 11).foldLeft((4, 0))({case ((mul, tot), v) => (mul/2, tot + (mul * (if (v == 'R') 1 else 0)))})._2
-    return 8 * row + col
+    8 * row + col
   }
 
 }
