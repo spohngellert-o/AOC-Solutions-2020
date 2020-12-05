@@ -9,7 +9,6 @@ object Main {
     val id_nums = ids.map(id => getIdFromStr(id))
     var possible_seats = (0 to (8 * 127) + 7).map(v => false)
     id_nums.foreach(id => possible_seats = possible_seats.updated(id, true))
-    println(possible_seats.count(v => !v))
     println(possible_seats.indexOfSlice(List(true, false, true)) + 1)
     file.close()
 
