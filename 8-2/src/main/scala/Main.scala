@@ -6,10 +6,13 @@ object Main {
     val file = Source.fromFile("input")
     val instrs = file.getLines.map(s => (s.split(" ").head, s.split(" ").last.toInt)).toList
     val bad_ind = instrs.foldLeft((0, -1))({case ((cur_ind, bad_ind), (instr, num)) => {
-      instr match {
-        case "jmp" => (cur_ind + 1, if(terminates(0, Set.empty, instrs.updated(cur_ind, ("nop", num)))) cur_ind else bad_ind)
-        case "nop" => (cur_ind + 1, if(terminates(0, Set.empty, instrs.updated(cur_ind, ("jmp", num)))) cur_ind else bad_ind)
-        case _ => (cur_ind + 1, bad_ind)
+      if (bad_ind > -1) (cur_ind+1, bad_ind)
+      else {
+        instr match {
+          case "jmp" => (cur_ind + 1, if (terminates(0, Set.empty, instrs.updated(cur_ind, ("nop", num)))) cur_ind else bad_ind)
+          case "nop" => (cur_ind + 1, if (terminates(0, Set.empty, instrs.updated(cur_ind, ("jmp", num)))) cur_ind else bad_ind)
+          case _ => (cur_ind + 1, bad_ind)
+        }
       }
     }})._2
     println(getAccAtInfOrEnd(0, 0, Set.empty, instrs.updated(bad_ind, instrs(bad_ind)._1 match {
