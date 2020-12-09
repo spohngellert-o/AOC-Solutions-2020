@@ -1,3 +1,4 @@
+import scala.annotation.tailrec
 import scala.io.Source
 
 object Main {
@@ -17,6 +18,7 @@ object Main {
     vals.exists(v => vals contains cv-v)
   }
 
+  @tailrec
   def findContiguousSum(start: Int, end: Int, badv: Int, nums: List[Long]): Option[Long] = {
     if (end >= nums.length) None
     else {
