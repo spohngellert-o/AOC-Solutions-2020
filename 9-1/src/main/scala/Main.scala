@@ -1,4 +1,3 @@
-import java.util
 import scala.io.Source
 
 object Main {

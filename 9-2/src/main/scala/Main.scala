@@ -1,4 +1,3 @@
-import java.util
 import scala.io.Source
 
 object Main {
@@ -11,9 +10,7 @@ object Main {
       else if (containsSum(prev25, v.toInt)) (bad_ind, ind+1, prev25.takeRight(24) :+ v)
       else (v.toInt, ind+1, prev25)
     }})._1)
-
     println(findContiguousSum(0, 1, bad_num, nums).getOrElse(-1))
-
     file.close
   }
   def containsSum(vals: List[Long], cv: Int): Boolean = {
