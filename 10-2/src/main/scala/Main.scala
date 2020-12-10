@@ -16,12 +16,7 @@ object Main {
   }
 
   def getTotalArrangements(joltages: List[Int], cur: Int, mv:Int): Long = {
-    val threeGaps = joltages.sorted.foldLeft((0, List[Int]()))({case ((p, gaps), v) => {
-      if (v-3 == p) {
-        (v, gaps :+ v)
-      }
-      else (v, gaps)
-    }})._2 :+ mv+3
+    val threeGaps = joltages.sorted.sliding(2).filter({case List(a, b) => b-a == 3}).map(_.last).toList :+ (mv+3)
     threeGaps.foldLeft((0, 1:Long))({case ((prev, acc), v) => {
       (v, acc * getTotRec(joltages, prev, v-3))
     }
