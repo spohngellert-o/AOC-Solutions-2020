@@ -27,9 +27,7 @@ object Main {
   }
   def main(args: Array[String]): Unit = {
     val file = Source.fromFile("input")
-    println(file.getLines.foldLeft(Ship(0, 0, 10, 1))((ship, v) => {
-      ship.act(v.head, v.tail.toInt)
-    }).getManDist)
+    println(file.getLines.foldLeft(Ship(0, 0, 10, 1))((ship, v) => ship.act(v.head, v.tail.toInt)).getManDist)
     file.close()
   }
 }
