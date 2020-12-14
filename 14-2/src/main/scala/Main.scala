@@ -33,7 +33,6 @@ object Main {
         (xMasked.foldLeft(map)((acc, v) => acc.updated(v.toLong, orig)), mask)
       }
     }})._1
-//    mem.foreach(println)
     println(mem.foldLeft(BigInt(0))({case (acc, (addr, v)) => acc + v}))
     file.close
   }
