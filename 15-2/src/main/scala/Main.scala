@@ -13,6 +13,22 @@ object Main {
     val last_spoken = nums.last
     @tailrec
     def run(cm: Map[Long, Queue[Int]], turn: Int, ls: Long): Long = {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       if (turn % 1000000 == 0) println(turn)
       if (turn == end + 1) ls
       else if (cm(ls).length == 1) run(cm.updated(0.toLong, cm.getOrElse(0.toLong, Queue()).appended(turn)), turn+1, 0.toLong)
